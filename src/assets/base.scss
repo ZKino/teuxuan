@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  color: rgba(0, 0, 0, .87);
+  font-size: 14px;
+  font-family: Roboto, sans-serif;
+  background: linear-gradient(90deg, #F8EEEE 0%, #F2F0E8 100%);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
