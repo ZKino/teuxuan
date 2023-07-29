@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Nav from '@/components/nav.vue'
 import SearchBar from './components/SearchBar.vue'
-import Title from '@/components/title.vue';
+import Title from '@/components/title.vue'
 import Secondcontent from './components/Secondcontent.vue'
 import NewbornZone from './components/NewbornZone.vue'
 import Purchase from './components/Purchase.vue'
