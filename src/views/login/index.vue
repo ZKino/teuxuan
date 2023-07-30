@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const form = reactive({
   account: '',
@@ -14,6 +17,16 @@ const submit = () => {
       type: 'warning',
     })
   }
+}
+
+const linkToRegister = () => {
+  router.push('/register')
+}
+
+const onTiyan = () => {
+  ElMessage({
+    message: '敬请期待！',
+  })
 }
 </script>
 
@@ -37,8 +50,8 @@ const submit = () => {
         <el-button type="primary" @click="submit">登录</el-button>
       </div>
       <div class="action">
-        <span class="txt">还没有账号？立即注册</span>
-        <span class="tiyan">体验一下？</span>
+        <span class="txt" @click="linkToRegister">还没有账号？立即注册</span>
+        <span class="tiyan" @click="onTiyan">体验一下？</span>
       </div>
     </div>
     <div class="right"></div>
@@ -106,7 +119,7 @@ const submit = () => {
       margin-left: 10px;
     }
     & span:last-child {
-      color: rbg(255, 87, 2);
+      color: rgb(255, 87, 2);
     }
   }
 }
