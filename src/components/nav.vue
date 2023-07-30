@@ -10,6 +10,9 @@ const isShow = ref(false)
 const onShow = () => {
   isShow.value = true
 }
+const onClose = () => {
+  isShow.value = false
+}
 </script>
 
 <template>
@@ -41,7 +44,7 @@ const onShow = () => {
       </div>
     </div>
   </div>
-  <Dialog :isShow="isShow" />
+  <Dialog :isShow="isShow" @onClose="onClose" />
 </template>
 
 <style lang="scss" scoped>

@@ -6,19 +6,15 @@ type TProps = {
 }
 const props = withDefaults(defineProps<TProps>(), {})
 
-const _isShow = ref(false)
-
-watchEffect(() => {
-  _isShow.value = props.isShow
-})
+const emits = defineEmits(['onClose'])
 
 const onClose = () => {
-  _isShow.value = false
+  emits('onClose')
 }
 </script>
 <template>
   <div
-    v-if="_isShow"
+    v-if="props.isShow"
     id="customerDialog"
     style="
       width: 100vw;
