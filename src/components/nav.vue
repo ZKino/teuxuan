@@ -1,6 +1,15 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { RouterLink } from 'vue-router'
 import { ArrowDown } from '@element-plus/icons-vue'
+
+import Dialog from '@/components/dialog.vue'
+
+const isShow = ref(false)
+const onShow = () => {
+  isShow.value = true
+}
 </script>
 
 <template>
@@ -24,7 +33,7 @@ import { ArrowDown } from '@element-plus/icons-vue'
               </template>
             </el-dropdown>
           </div>
-          <div class="service">联系客服</div>
+          <div class="service" @click="onShow">联系客服</div>
           <div class="login">
             <RouterLink to="/login">登录</RouterLink>
           </div>
@@ -32,6 +41,7 @@ import { ArrowDown } from '@element-plus/icons-vue'
       </div>
     </div>
   </div>
+  <Dialog :isShow="isShow" />
 </template>
 
 <style lang="scss" scoped>
