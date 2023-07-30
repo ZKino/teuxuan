@@ -122,6 +122,7 @@ const submitForm = async (formEl: any) => {
 </template>
 <style lang="scss" scoped>
 .register {
+  height: 100vh;
   background-color: #fafafa;
 }
 
