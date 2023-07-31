@@ -10,10 +10,9 @@ import SearchBar from './components/SearchBar.vue'
       <div class="inner">
         <div class="menu-list">
           <div class="title">用户中心</div>
-          <el-menu>
+          <el-menu default-active="3">
             <el-sub-menu index="1">
               <template #title>
-                <el-icon><location /></el-icon>
                 <span>个人中心</span>
               </template>
               <el-menu-item-group>
@@ -23,7 +22,6 @@ import SearchBar from './components/SearchBar.vue'
             </el-sub-menu>
             <el-sub-menu index="2">
               <template #title>
-                <el-icon><location /></el-icon>
                 <span>账号管理</span>
               </template>
               <el-menu-item-group>
@@ -35,7 +33,6 @@ import SearchBar from './components/SearchBar.vue'
             </el-sub-menu>
             <el-sub-menu index="3">
               <template #title>
-                <el-icon><location /></el-icon>
                 <span>订单中心</span>
               </template>
               <el-menu-item-group>
@@ -44,19 +41,16 @@ import SearchBar from './components/SearchBar.vue'
             </el-sub-menu>
             <el-sub-menu index="4">
               <template #title>
-                <el-icon><location /></el-icon>
                 <span>营销中心</span>
               </template>
             </el-sub-menu>
             <el-sub-menu index="5">
               <template #title>
-                <el-icon><location /></el-icon>
                 <span>积分中心</span>
               </template>
             </el-sub-menu>
             <el-sub-menu index="6">
               <template #title>
-                <el-icon><location /></el-icon>
                 <span>我的钱包</span>
               </template>
               <el-menu-item-group>
@@ -65,14 +59,58 @@ import SearchBar from './components/SearchBar.vue'
             </el-sub-menu>
           </el-menu>
         </div>
-        <div class="content-right">44545</div>
+        <div class="content-right">
+          <div class="row">
+            <el-card>
+              <el-tabs v-model="activeName" class="demo-tabs">
+                <el-tab-pane label="全部订单" name="first"></el-tab-pane>
+                <el-tab-pane label="待付款" name="second"></el-tab-pane>
+                <el-tab-pane label="待发货" name="third"></el-tab-pane>
+                <el-tab-pane label="待收货" name="fourth"></el-tab-pane>
+                <el-tab-pane label="待评价" name="five"></el-tab-pane>
+                <el-tab-pane label="已评价" name="six"></el-tab-pane>
+                <el-tab-pane label="售后订单" name="seven"></el-tab-pane>
+              </el-tabs>
+              <div style="display: flex; justify-content: space-between">
+                <div class="list list-head">
+                  <span class="fit fit-first">商品信息</span>
+                </div>
+                <div
+                  class="goodsoptstyle"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                  "
+                >
+                  <div></div>
+                  <div><span>查看商品</span></div>
+                  <div><span>商品操作</span></div>
+                  <div><span>交易状态</span></div>
+                  <div><span>交易操作</span></div>
+                  <div><span>商品金额</span></div>
+                </div>
+              </div>
+            </el-card>
+          </div>
+          <div class="row" id="list-box"></div>
+          <div class="row mini">
+            <el-card style="display: flex;justify-content: flex-end;">
+              <el-pagination
+                :page-sizes="[20, 50, 100]"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="0"
+              />
+            </el-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
 .myorder {
-  height: 100vh;
+  background-color: #f7f7f7;
 }
 
 .myorder .inner {
@@ -104,6 +142,47 @@ import SearchBar from './components/SearchBar.vue'
 
   .content-right {
     min-width: 976px;
+
+    .row {
+      margin-bottom: 16px;
+      :deep(.el-tabs__active-bar) {
+        display: none;
+      }
+      :deep(.el-tabs__header .el-tabs__item.is-active) {
+        color: #eb5411;
+      }
+      .list-head {
+        color: #666666;
+      }
+      .list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .fit-first {
+          text-align: left;
+        }
+
+        .fit {
+          width: 0;
+          min-width: 400px;
+          flex: auto;
+          flex-grow: 2;
+          flex-shrink: 2;
+        }
+      }
+      .goodsoptstyle div {
+        width: 80px;
+        text-align: center;
+      }
+    }
+
+    #list-box {
+      height: 0;
+      min-height: 600px;
+      flex: auto;
+      overflow: auto;
+    }
   }
 }
 </style>
