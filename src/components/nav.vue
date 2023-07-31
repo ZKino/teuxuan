@@ -24,7 +24,6 @@ const onClose = () => {
           <div class="order">
             <el-dropdown>
               <span class="el-dropdown-link">
-                我的订单
                 <el-icon class="el-icon--right">
                   <arrow-down />
                 </el-icon>
@@ -72,6 +71,11 @@ const onClose = () => {
     .login {
       margin-left: 40px;
       cursor: pointer;
+    }
+
+    .order {
+      position: relative;
+      top: 3px;
     }
 
     a {

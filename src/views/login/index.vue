@@ -126,7 +126,6 @@ const onTiyan = () => {
 .right {
   width: 56%;
   height: 100%;
-  border: 1px solid blue;
   background-image: url('https://www.zrcsc.com/api/files/62e10c089221cdded426fb55');
   background-repeat: no-repeat;
   background-size: cover;

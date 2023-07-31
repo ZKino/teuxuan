@@ -1,10 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+type IProps = {
+  iconColor: string
+  inputBg: string
+  inputColor: string
+}
+const props = withDefaults(defineProps<IProps>(), {
+  iconColor: '#fff',
+  inputBg: '#ffffff67',
+  inputColor: '#fff'
+})
+</script>
 
 <template>
   <div class="search">
     <div class="inp-wrapper">
-      <Search class="icon" />
-      <input type="text" class="inp" />
+      <Search class="icon" :style="{ color: iconColor }" />
+      <input type="text" class="inp" :style="{backgroundColor: inputBg, color: inputColor}" />
     </div>
     <button type="button" class="firm">搜索</button>
   </div>
@@ -43,14 +55,11 @@
       border-top-left-radius: 4px;
       border-bottom-left-radius: 4px;
       outline: none;
-      color: #fff;
       box-sizing: border-box;
-      background-color: #ffffff67;
     }
   }
 
   .firm {
-    border: 1px solid red;
     display: inline-block;
     color: #fff;
     font-size: 1rem;

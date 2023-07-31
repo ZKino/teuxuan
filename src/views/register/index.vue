@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import Nav from '@/components/nav.vue'
+import SearchBar from './components/SearchBar.vue'
 
 const form = reactive({
   uname: '',
@@ -46,6 +47,7 @@ const submitForm = async (formEl: any) => {
 <template>
   <div class="register">
     <Nav />
+    <SearchBar />
     <div class="container">
       <div class="inner">
         <el-form :model="form" :rules="rules" ref="ruleFormRef">
