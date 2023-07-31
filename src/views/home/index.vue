@@ -2,6 +2,7 @@
 import Nav from '@/components/nav.vue'
 import SearchBar from './components/SearchBar.vue'
 import Title from '@/components/title.vue'
+import MenuBanner from './components/MenuBanner.vue'
 import Secondcontent from './components/Secondcontent.vue'
 import NewbornZone from './components/NewbornZone.vue'
 import Purchase from './components/Purchase.vue'
@@ -11,7 +12,7 @@ import FooterBox from './components/FooterBox.vue'
 <template>
   <Nav />
   <SearchBar />
-  <div id="HomeNavapp">HomeNavapp</div>
+  <MenuBanner />
   <Secondcontent />
   <Title title="新品推荐" />
   <NewbornZone />
