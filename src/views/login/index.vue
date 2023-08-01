@@ -12,10 +12,32 @@ const form = reactive({
 
 const submit = () => {
   if (!form.account || !form.password) {
-    ElMessage({
+    return ElMessage({
       message: '账号密码不能为空！',
       type: 'warning',
     })
+  }
+
+  const userInfo = localStorage.getItem('userInfo') || ''
+  const userInfoObj = JSON.parse(userInfo)
+  if (userInfoObj.account && userInfoObj.loginPwd) {
+    if (
+      form.account === userInfoObj.account &&
+      form.password === userInfoObj.loginPwd
+    ) {
+      ElMessage({
+        message: '登录成功',
+        type: 'success',
+      })
+      setTimeout(() => {
+        router.replace('/')
+      }, 2000)
+    } else {
+      return ElMessage({
+        message: '登录失败',
+        type: 'error',
+      })
+    }
   }
 }
 

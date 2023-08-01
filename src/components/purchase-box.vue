@@ -1,23 +1,31 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps({
+  id: Number,
+  url: String,
+  labels: Array,
+  title: String,
+  price: String,
+  unit: String,
+})
+</script>
 <template>
   <div class="purchase-box">
     <div style="position: relative">
-      <img
-        src="https://www.zrcsc.com/api/files/64c1d3f99221cd59e8ed59b8"
-        alt=""
-      />
+      <img :src="url" alt="" />
     </div>
     <div class="labels">
-      <span class="labelStyle">爆品</span><span class="labelStyle">TOP</span>
+      <span class="labelStyle" v-for="(item, index) in labels" :key="index">{{
+        item
+      }}</span>
     </div>
     <div class="coupons">
       <span class="isDirect">直</span>
       <span class=""></span> <span class=""></span>
     </div>
-    <div class="purchase-items-text">自然馋葱香椒麻猪舌1kg*10</div>
+    <div class="purchase-items-text">{{ title }}</div>
     <div class="purchase-items-foot">
-      <div class="purchase-items-red">￥565</div>
-      <span>/箱</span>
+      <div class="purchase-items-red">{{ price }}</div>
+      <span>{{ unit }}</span>
     </div>
     <div class="purchase-items-add">
       <img src="https://www.zrcsc.com/api/files/63048afb9221cdc090db64c5" />

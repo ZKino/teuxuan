@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import Nav from '@/components/nav.vue'
 import SearchBar from './components/SearchBar.vue'
+
+const router = useRouter()
 
 const form = reactive({
   uname: '',
@@ -37,10 +40,22 @@ const submitForm = async (formEl: any) => {
   await formEl.validate((valid: any, fields: any) => {
     if (valid) {
       console.log('submit')
+      saveForm()
     } else {
       console.log(fields, '===')
     }
   })
+}
+const saveForm = () => {
+  const userInfo = JSON.stringify(form)
+  localStorage.setItem('userInfo', userInfo)
+  ElMessage({
+    message: '注册成功',
+    type: 'success',
+  })
+  setTimeout(() => {
+    router.go(-1)
+  }, 2000)
 }
 </script>
 
@@ -124,7 +139,6 @@ const submitForm = async (formEl: any) => {
 </template>
 <style lang="scss" scoped>
 .register {
-  height: 100vh;
   background-color: #fafafa;
 }
 

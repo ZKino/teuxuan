@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const num = ref(-1)
 const onMousenter = (e: any, index: number) => {
   num.value = index
@@ -7,6 +10,22 @@ const onMousenter = (e: any, index: number) => {
 const onMousleave = () => {
   num.value = -1
 }
+const linkToMyOrder = (e: any, aName: string) => {
+  localStorage.setItem('aName', aName)
+  router.push('/myorder')
+}
+const linkToRegister = () => {
+  router.push('/register')
+}
+const linkToLogin = () => {
+  router.push('/login')
+}
+const account = ref('')
+onMounted(() => {
+  const userInfo = localStorage.getItem('userInfo') || ''
+  const userInfoObj = JSON.parse(userInfo)
+  account.value = userInfoObj.account
+})
 </script>
 <template>
   <div class="menu-banner">
@@ -296,7 +315,7 @@ const onMousleave = () => {
                 src="https://www.zrcsc.com/api/files/62a2ba8b9221cda8747d43e3"
               />
               <div class="nav-right-head-information">
-                <div class="nav-right-head-information-name">请先登录</div>
+                <div class="nav-right-head-information-name">{{ account ? `尊敬的${account}` : '请先登录' }}</div>
                 <div class="nav-right-head-information-introduce">
                   下午好，欢迎来到特U选
                 </div>
@@ -308,8 +327,8 @@ const onMousleave = () => {
               </div>
             </div>
             <div class="nav-right-button">
-              <div class="login-key">一键登录</div>
-              <div class="register">免费登录</div>
+              <div class="login-key" @click="linkToLogin">一键登录</div>
+              <div class="register" @click="linkToRegister">免费注册</div>
             </div>
           </div>
           <img
@@ -317,19 +336,19 @@ const onMousleave = () => {
             alt=""
           />
           <div class="nav-right-state">
-            <div>
+            <div @click="linkToMyOrder($event, 'second')">
               <div class="nav-right-state-num">0</div>
               <div class="pointer">待付款</div>
             </div>
-            <div>
+            <div @click="linkToMyOrder($event, 'third')">
               <div class="nav-right-state-num">0</div>
               <div class="pointer">待发货</div>
             </div>
-            <div>
+            <div @click="linkToMyOrder($event, 'fourth')">
               <div class="nav-right-state-num">0</div>
               <div class="pointer">待收货</div>
             </div>
-            <div>
+            <div @click="linkToMyOrder($event, 'five')">
               <div class="nav-right-state-num">0</div>
               <div class="pointer">待评价</div>
             </div>

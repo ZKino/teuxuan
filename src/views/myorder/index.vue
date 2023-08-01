@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import SearchBar from './components/SearchBar.vue'
+
+const activeName = ref('first')
+
+onMounted(() => {
+  const aName = localStorage.getItem('aName') || 'first'
+  activeName.value = aName
+})
 </script>
 
 <template>
