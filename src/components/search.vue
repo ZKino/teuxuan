@@ -1,9 +1,9 @@
 <script setup lang="ts">
 
 type IProps = {
-  iconColor: string
-  inputBg: string
-  inputColor: string
+  iconColor?: string
+  inputBg?: string
+  inputColor?: string
 }
 const props = withDefaults(defineProps<IProps>(), {
   iconColor: '#fff',

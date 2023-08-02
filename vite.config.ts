@@ -27,6 +27,7 @@ export default defineConfig({
     },
   },
   server: {
+    host: '0.0.0.0',
     proxy: {
       '/apiTest': {
         target: 'http://192.168.10.6:3000', // 代理的线上的接口地址

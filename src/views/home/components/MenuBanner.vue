@@ -23,6 +23,7 @@ const linkToLogin = () => {
 const account = ref('')
 onMounted(() => {
   const userInfo = localStorage.getItem('userInfo') || ''
+  if(!userInfo) return
   const userInfoObj = JSON.parse(userInfo)
   account.value = userInfoObj.account
 })
